@@ -34,6 +34,19 @@ async function run() {
         });
 
         // AllReview api
+        app.get('/allReview', async (req, res) => {
+            let query = {};
+            if (req.query.email) {
+                query = {
+                    email: req.query.email
+                }
+            }
+            const cursor = reviewCollection.find(query);
+            const allReview = await cursor.toArray();
+            res.send(allReview);
+        });
+
+
         app.post('/allReview', async (req, res) => {
             const allReview = req.body;
             const result = await reviewCollection.insertOne(allReview);
