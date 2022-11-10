@@ -51,7 +51,7 @@ async function run() {
             const allReview = req.body;
             const result = await reviewCollection.insertOne(allReview);
             res.send(result);
-        })
+        });
     }
     finally {
 
@@ -63,7 +63,7 @@ run().catch(err => console.log(err));
 
 app.get('/', (req, res) => {
     res.send('tour server is running')
-})
+});
 app.listen(port, () => {
     console.log(`tour port server running on ${port}`)
-})
+});
